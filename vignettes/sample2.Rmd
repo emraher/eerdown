@@ -1,0 +1,128 @@
+---
+title: "Sample R Markdown Document (ggplot Placeholder)"
+author: "Emrah Er"
+date: "`r format(Sys.Date(), '%Y-%m-%d')`"
+editor: source
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    number_sections: true
+---
+
+# Overview
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi.
+
+## Objectives
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sagittis ipsum. Praesent mauris.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  fig.width = 7,
+  fig.height = 4.5
+)
+```
+
+# Data (Placeholder)
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec ante. Sed lacinia, urna non tincidunt mattis.
+
+```{r packages}
+library(tidyverse)
+```
+
+```{r make-data}
+set.seed(123)
+
+dat <- tibble(
+  id = 1:200,
+  group = sample(c("A", "B"), size = 200, replace = TRUE),
+  x = rnorm(200),
+  eps = rnorm(200, sd = 0.8)
+) %>%
+  mutate(
+    y = 0.5 + 1.2 * x + if_else(group == "B", 0.7, 0) + eps
+  )
+```
+
+# Descriptive Checks
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lacinia arcu eget nulla.
+
+```{r head}
+dplyr::glimpse(dat)
+```
+
+```{r summary}
+dat %>%
+  group_by(group) %>%
+  summarise(
+    n = n(),
+    mean_x = mean(x),
+    sd_x = sd(x),
+    mean_y = mean(y),
+    sd_y = sd(y),
+    .groups = "drop"
+  )
+```
+
+# Visualization (ggplot)
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Class aptent taciti sociosqu ad litora torquent.
+
+## Scatter + Linear Fit
+
+```{r ggplot-scatter, fig.alt="Synthetic data; replace with your own dataset"}
+ggplot(dat, aes(x = x, y = y, colour = group)) +
+  geom_point(alpha = 0.6) +
+  geom_smooth(method = "lm", se = TRUE) +
+  labs(
+    title = "Placeholder Scatterplot with Linear Fit",
+    subtitle = "Synthetic data; replace with your own dataset",
+    x = "x",
+    y = "y",
+    colour = "Group"
+  ) +
+  theme_minimal()
+```
+
+## Distribution Plot
+
+```{r ggplot-density, fig.alt="Placeholder Density Plot"}
+ggplot(dat, aes(x = y, fill = group)) +
+  geom_density(alpha = 0.4) +
+  labs(
+    title = "Placeholder Density Plot",
+    x = "y",
+    y = "Density",
+    fill = "Group"
+  ) +
+  theme_minimal()
+```
+
+# Model (Placeholder)
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dignissim lacinia nunc.
+
+```{r model}
+m1 <- lm(y ~ x + group, data = dat)
+summary(m1)
+```
+
+```{r tidy-model}
+# Placeholder: keep or remove depending on your workflow
+broom::tidy(m1)
+```
+
+# Notes
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sodales ligula in libero.
+
+```{r session-info}
+sessionInfo()
+```

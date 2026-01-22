@@ -1,0 +1,86 @@
+---
+title: "Sample R Markdown Document"
+author: "Emrah Er"
+date: "`r format(Sys.Date(), '%Y-%m-%d')`"
+editor: source
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    number_sections: true
+---
+
+# Introduction
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.
+
+## Motivation
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
+
+# Data
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sagittis ipsum. Praesent mauris.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE
+)
+```
+
+## Load Packages
+
+```{r packages}
+library(tidyverse)
+```
+
+## Import Data (Placeholder)
+
+```{r import-data}
+dat <- tibble(
+  id = 1:10,
+  x  = rnorm(10),
+  y  = rnorm(10)
+)
+```
+
+# Descriptive Analysis
+
+## Summary Table
+
+```{r summary}
+summary(dat)
+```
+
+# Model (Placeholder)
+
+## Linear Regression
+
+```{r regression}
+m1 <- lm(y ~ x, data = dat)
+summary(m1)
+```
+
+## Extract Coefficients
+
+```{r coefficients}
+coef(m1)
+confint(m1)
+```
+
+# Robustness / Extensions (Placeholder)
+
+```{r robustness}
+m2 <- lm(y ~ poly(x, 2), data = dat)
+summary(m2)
+```
+
+# Conclusion
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus ante dapibus diam.
+
+```{r session-info}
+sessionInfo()
+```

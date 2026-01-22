@@ -1,0 +1,18 @@
+Package: eerdown
+Title: Custom 'pkgdown' Template for emraher
+Version: 0.1.0
+Authors@R:
+    person("Emrah", "Er", , "eer@eremrah.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0001-9909-7479"))
+Description: My personal pkgdown docs style
+License: MIT + file LICENSE
+URL: https://eremrah.com/eerdown, https://github.com/emraher/eerdown
+BugReports: https://github.com/emraher/eerdown/issues
+Config/Needs/website: emraher/eerdown
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
+Suggests:
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

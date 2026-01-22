@@ -1,0 +1,481 @@
+/* ========================================================================== */
+/* pkgdown/extra.scss                                                         */
+/* Department palette for UI. Catppuccin (light) and Dracula (dark) only in   */
+/* code blocks and inline code.                                               */
+/* ========================================================================== */
+
+/* -------------------------------------------------------------------------- */
+/* DEPARTMENT-TINTED NEUTRALS                                                  */
+/* -------------------------------------------------------------------------- */
+
+$faint-background: mix($body-bg, $secondary, 97%) !default;
+$faint-border: change-color($secondary, $alpha: 0.25) !default;
+
+$navbar-background: $primary !default;        // department navy
+$footer-background: $faint-background !default;
+
+/* -------------------------------------------------------------------------- */
+/* RESPONSIVE TYPOGRAPHY                                                      */
+/* -------------------------------------------------------------------------- */
+
+@include media-breakpoint-up(xxl) {
+  body { font-size: 20px }
+}
+
+/* -------------------------------------------------------------------------- */
+/* BODY LINKS (DEPARTMENT COLOURS)                                             */
+/* -------------------------------------------------------------------------- */
+
+.contents a:not(.sourceLine) {
+  color: $primary;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+}
+
+.contents a:not(.sourceLine):hover,
+.contents a:not(.sourceLine):focus {
+  color: $secondary;
+}
+
+/* -------------------------------------------------------------------------- */
+/* HEADINGS                                                                   */
+/* -------------------------------------------------------------------------- */
+/* Use smaller headings with more vertical space */
+
+h2 {
+  @include font-size(1.8rem);
+  margin-top: 2.5rem;
+}
+
+main .page-header + .section h2 {
+  margin-top: 1rem;
+}
+
+h3 {
+  @include font-size(1.5rem);
+  margin-top: 2rem;
+}
+
+h4 {
+  @include font-size(1.2rem);
+  font-weight: bold;
+  margin-top: 1.2rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: mix($body-color, $primary, 90%);
+}
+
+h2, h3, h4, h5, h6 {
+  margin-bottom: 1rem;
+}
+
+.page-header {
+  border-bottom: none;
+  min-height: 0;
+  margin-bottom: 2rem;
+  h1 { margin-top: 3rem }
+}
+
+/* -------------------------------------------------------------------------- */
+/* HOME PAGE                                                                  */
+/* -------------------------------------------------------------------------- */
+
+.template-home {
+  .page-header {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    min-height: 0;
+    margin: 2rem 0;
+    padding: 2rem 0;
+    border-bottom: 1px solid $faint-border;
+
+    h1 { margin-top: 0rem }
+
+    @include media-breakpoint-down(sm) {
+      margin: 0.5rem 0;
+      padding: 0.5rem 0;
+    }
+  }
+
+  img.logo {
+    margin-left: 0;
+
+    @include media-breakpoint-down(sm) {
+      width: 100px;
+    }
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* NAVBAR (DEPARTMENT NAVY + GOLD ACCENTS)                                    */
+/* -------------------------------------------------------------------------- */
+
+nav.navbar {
+  border-bottom: 1px solid $faint-border;
+  background-color: $navbar-background;
+  padding: 1rem 0;
+
+  .navbar-brand,
+  .nav-link {
+    color: rgba($white, 0.92) !important;
+  }
+
+  .nav-link:hover,
+  .nav-link:focus {
+    color: $secondary !important;
+    background: transparent;
+    text-decoration: underline;
+  }
+
+  .nav-link.active,
+  .active > .nav-link {
+    color: $secondary !important;
+    font-weight: 600;
+    background: transparent;
+  }
+
+  .navbar-toggler {
+    border-color: rgba($white, 0.35);
+  }
+
+  .navbar-toggler-icon {
+    filter: invert(1);
+    opacity: 0.9;
+  }
+}
+
+.dropdown-menu {
+  box-shadow: 0 2px 5px 0 rgba(120,120,120,.1);
+  border: 1px solid $faint-border;
+}
+
+.dropdown-item {
+  &:hover, &:focus {
+    background: $body-bg;
+    color: $primary;
+    text-decoration: underline;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* SIDEBAR                                                                    */
+/* -------------------------------------------------------------------------- */
+
+@include media-breakpoint-up(sm) {
+  #toc {
+    top: calc(#{$pkgdown-nav-height} + 2rem);
+  }
+}
+
+.row > aside {
+  margin-top: calc(2rem + #{$pkgdown-nav-height});
+}
+
+aside {
+  border-left: 1px solid $faint-border;
+  margin-bottom: 2rem;
+  line-height: 1.4;
+
+  h2 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+    margin-top: 2rem;
+    font-weight: bold;
+    letter-spacing: 0.15rem;
+    color: $gray-800;
+  }
+
+  div:first-child h2 {
+    margin-top: 0;
+  }
+
+  nav:first-child h2 {
+    margin-top: 0;
+  }
+
+  .list-unstyled li {
+    margin-bottom: 0.5rem;
+  }
+
+  @include media-breakpoint-down(sm) {
+    margin: 1rem 0 0 0;
+    padding: 2rem 1rem 1rem 1rem;
+    background-color: $faint-background;
+    width: 100vw;
+    border-top: 1px solid $faint-border;
+  }
+}
+
+#toc .nav {
+  a.nav-link {
+    color: inherit;
+    padding: 0.25rem 0;
+
+    &:hover, &:focus {
+      text-decoration: underline;
+    }
+
+    &.active {
+      color: $primary;
+      font-weight: 600;
+    }
+
+    &:hover, &:focus, &.active {
+      background-color: $body-bg;
+    }
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* FOOTER                                                                     */
+/* -------------------------------------------------------------------------- */
+
+footer {
+  margin-top: auto;
+  margin-bottom: 0;
+  border-top: 1px solid $faint-border;
+  padding: 2rem 0;
+  background-color: $footer-background;
+
+  p {
+    margin-bottom: 0;
+  }
+
+  .container {
+    display: flex;
+  }
+
+  @include media-breakpoint-down(sm) {
+    .container {
+      flex-direction: column;
+      row-gap: 1rem;
+    }
+  }
+}
+
+/* Add margin to bottom of contents, since we can't add it to footer */
+main {
+  margin-bottom: 5rem;
+}
+
+@include media-breakpoint-down(sm) {
+  main { margin-bottom: 0 }
+}
+
+/* Sticky footer tweaks */
+body {
+  min-height: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  & > .container {
+    min-height: 0;
+    flex-shrink: 0;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* NAVBAR DROPDOWN (DEPARTMENT COLOURS)                                       */
+/* -------------------------------------------------------------------------- */
+
+nav.navbar .dropdown-menu {
+  background-color: $navbar-background;
+  border: 1px solid rgba($secondary, 0.35);
+  box-shadow: 0 10px 24px rgba($black, 0.18);
+  padding: 0.35rem 0;
+}
+
+nav.navbar .dropdown-item,
+nav.navbar .dropdown-header {
+  color: rgba($white, 0.94);
+}
+
+nav.navbar .dropdown-item:hover,
+nav.navbar .dropdown-item:focus {
+  background-color: $secondary;
+  color: $navbar-background;
+  text-decoration: none;
+}
+
+nav.navbar .dropdown-item.active,
+nav.navbar .dropdown-item:active {
+  background-color: mix($secondary, $navbar-background, 85%);
+  color: $navbar-background;
+  font-weight: 600;
+}
+
+nav.navbar .dropdown-divider {
+  border-top-color: rgba($white, 0.18);
+}
+
+
+/* -------------------------------------------------------------------------- */
+/* LISTS                                                                      */
+/* -------------------------------------------------------------------------- */
+
+ol, ul {
+  padding-left: 1.5rem;
+}
+
+ul {
+  list-style-type: disc;
+}
+
+main {
+  li {
+    margin-bottom: 0.25rem;
+    li { margin-bottom: 0; }
+  }
+
+  ul ul, ol ol, ul ol, ol ul {
+    margin: 0.5rem 0;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* SEARCH HIGHLIGHT (USE GOLD TINT, NOT CODE PALETTES)                        */
+/* -------------------------------------------------------------------------- */
+
+$mark-colour: mix($body-bg, $secondary, 70%) !default;
+
+mark {
+  background: linear-gradient(-135deg,
+    change-color($mark-colour, $alpha: 0.2),
+    change-color($mark-colour, $alpha: 0.7) 95%,
+    change-color($mark-colour, $alpha: 0.1)
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* FOOTER (MATCH NAVBAR)                                                      */
+/* -------------------------------------------------------------------------- */
+
+footer {
+  background-color: $primary;                 // navy
+  border-top: 1px solid change-color($secondary, $alpha: 0.55); // gold rule
+  padding: 2rem 0;
+
+  color: rgba($white, 0.88);
+
+  a {
+    color: rgba($white, 0.92);
+    text-decoration-thickness: 0.08em;
+    text-underline-offset: 0.18em;
+  }
+
+  a:hover, a:focus {
+    color: $secondary;                        // gold on hover
+  }
+}
+
+/* If you keep footer flex layout */
+footer .container {
+  display: flex;
+}
+
+/* -------------------------------------------------------------------------- */
+/* SHRINK NAVBAR                                                              */
+/* -------------------------------------------------------------------------- */
+/* Shrink overall navbar vertical padding */
+.navbar {
+  padding-top: 0.15rem;
+  padding-bottom: 0.15rem;
+}
+
+/* Shrink brand (package name) */
+.navbar .navbar-brand {
+  font-size: 1rem;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Shrink links */
+.navbar .navbar-nav .nav-link {
+  font-size: 0.95rem;
+  padding-top: 0.20rem;
+  padding-bottom: 0.20rem;
+}
+
+/* Optional: shrink dropdown menu text */
+.navbar .dropdown-menu {
+  font-size: 0.95rem;
+}
+
+/* Optional: shrink the search box */
+.navbar .form-control {
+  font-size: 0.90rem;
+  padding-top: 0.15rem;
+  padding-bottom: 0.15rem;
+}
+
+/* -------------------------------------------------------------------------- */
+/* PAGE HEADERS                                                               */
+/* -------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
+/* Force home header to behave like other page headers                         */
+/* -------------------------------------------------------------------------- */
+
+.template-home .page-header {
+  display: block !important;  /* overrides the flex header on home */
+  border-bottom: none;
+  min-height: 0;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  padding: 0 0 0.5rem 0;
+}
+
+.template-home .page-header img.logo {
+  float: right;
+  width: 100px;
+  height: auto;
+  margin-left: 30px;
+}
+
+/* Clear the float so the next section does not wrap */
+.template-home .page-header::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/* Optional: make the home title match your other pages */
+.template-home .page-header h1 {
+  font-size: 2.5rem;  /* set this to whatever you see on the reference/article pages */
+  line-height: 1.1;
+  margin: 0;
+}
+
+
+.template-home .page-header img.logo,
+.template-reference-index .page-header img.logo {
+  float: right;
+  width: 100px;
+  height: auto;
+  margin-left: 30px;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/* Home page: remove the extra top gap introduced by section.level1            */
+/* -------------------------------------------------------------------------- */
+
+.template-home main > .section.level1 {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Make home header spacing match other pages */
+.template-home .page-header {
+  margin-top: 1.5rem !important;     /* set this to the value you want */
+  margin-bottom: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+}
+
+/* If the first element inside level1 has its own margin collapsing upward */
+.template-home main > .section.level1 > :first-child {
+  margin-top: 0 !important;
+}

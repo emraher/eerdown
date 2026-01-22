@@ -1,0 +1,9 @@
+template:
+  package: eerdown
+  bootstrap: 5
+
+url: https://eremrah.com/eerdown
+
+authors:
+  Emrah Er:
+    href: https://eremrah.com

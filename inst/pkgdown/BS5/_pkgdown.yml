@@ -1,0 +1,93 @@
+template:
+  bootstrap: 5
+  theme: dracula
+  bslib:
+    # ---------------------------------------------------------------------- #
+    # CORE PAGE COLOURS (DEPARTMENT)----
+    # ---------------------------------------------------------------------- #
+    bg: "#ffffff"
+    fg: "#1b1b1b"
+
+    primary: "#33337E"    # department navy
+    secondary: "#AC975A"  # department gold
+    info: "#6A6073"       # department slate
+
+    # ---------------------------------------------------------------------- #
+    # SEMANTIC COLOURS (MUTED TO MATCH DEPT PALETTE)----
+    # ---------------------------------------------------------------------- #
+    success: "#4F8A5B"    # muted green, harmonious with navy/gold
+    warning: "#C07A00"    # muted amber
+    danger: "#B04A53"     # muted red
+
+    light: "#F5F3EE"      # warm off-white (department-like)
+
+    # ---------------------------------------------------------------------- #
+    # TYPOGRAPHY AND GEOMETRY (KEEP YOUR CHOICES)----
+    # ---------------------------------------------------------------------- #
+    base_font: {google: "Open Sans"}
+    heading_font: {google: "Source Serif 4"}
+    code_font: {google: "JetBrains Mono"}
+    font-size-base: 1.1rem
+
+    # Needed for tall navbars in some setups (documented by pkgdown)
+    pkgdown-nav-height: 48px
+
+    border-radius: 0
+    border-radius-sm: 0
+    border-radius-lg: 0
+
+
+code:
+  width: 71
+
+navbar:
+  bg: none
+  structure:
+    left:
+    - intro
+    - reference
+    - articles
+    - tutorials
+    right:
+    - news
+    - github
+    - bluesky
+    - twitter
+    - emraher
+  components:
+    reference:
+      text: Reference
+      href: reference/index.html
+    news:
+      icon: far fa-newspaper fa-lg
+      href: news/index.html
+      text: ""
+      title: "Changelog"
+      aria-label: News
+    emraher:
+      icon: fas fa-home fa-lg
+      href: https://eremrah.com
+      title: Emrah Er
+      aria-label: Home
+    github:
+      icon: fab fa-github fa-lg
+      href: https://github.com/emraher/eerdown/
+      aria-label: GitHub
+    twitter:
+      icon: fab fa-twitter fa-lg
+      href: https://twitter.com/emrah_er
+      aria-label: Twitter
+    bluesky:
+      icon: fab fa-bluesky fa-lg
+      href: https://bsky.app/profile/emraher.bsky.social
+      aria-label: Bluesky
+
+footer:
+  structure:
+    left: [developed_by, love]
+  components:
+    love: "**Built with ❤️ + ☕ + 🤖.**"
+
+authors:
+  Emrah Er:
+    href: https://eremrah.com
