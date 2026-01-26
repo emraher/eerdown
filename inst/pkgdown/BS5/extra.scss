@@ -374,3 +374,13 @@ footer {
   padding-bottom: 0.15rem;
 }
 
+/* -------------------------------------------------------------------------- */
+/* CITATION CODE BLOCK FIX                                                    */
+/* -------------------------------------------------------------------------- */
+/* Fix visibility for plain pre blocks (like BibTeX) that don't have syntax
+   highlighting - they get Dracula's dark background but need light text */
+
+.section pre:not(.sourceCode) {
+  color: #f8f8f2 !important;  // Dracula foreground color for plain text
+}
+
